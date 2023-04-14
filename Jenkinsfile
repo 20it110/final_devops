@@ -72,25 +72,6 @@ pipeline {
 
              }
         }
-        stage('commit version update'){
-            steps{
-                script{
-                    withCredentials([usernamePassword(credentialsId: 'github', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]){
-                        sh 'git config --global user.email "20it146@charusat.edu.in"'
-                        sh 'git config --global user.name "Sahil-4555"'
-
-                        sh 'git status'
-                        sh 'git branch'
-                        sh 'git config --list'
-
-                        sh "git remote set-url origin https://${USERNAME}:${PASSWORD}@github.com/Sahil-4555/SpringBoot_Jenkins.git"
-                        sh 'git add .'
-                        sh 'git commit -m "version change"'
-                        sh 'git push origin HEAD:jenkins-jobs'
-                    }
-                }
-            }
-        }
     }
     post{
         always{
